@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QDir>
+#include <QFileDialog>
+
 #include "jsonparser.h"
 #include  "paths.h"
 
@@ -37,4 +40,9 @@ void MainWindow::parse_serverlist()
         // Add the deserialized server item to the vector of servers
         m_serverlist.push_back(steamcmd::Server(details["steamclient"].get<bool>(), details["steamcmd"].get<bool>(), details["anonymous"].get<bool>(), details["appid"].get<int>(), it.key()));
     }
+}
+
+void MainWindow::on_pushButtonSteamCMDExecutableBrowse_clicked()
+{
+    ui->lineEditSteamCMDExecutablePath->setText(QFileDialog::getOpenFileName(this, "SteamCMD Executable", QDir::homePath()));
 }

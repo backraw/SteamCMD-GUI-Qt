@@ -21,6 +21,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+private slots:
+    void on_pushButtonSteamCMDExecutableBrowse_clicked();
+
 private:
     void parse_serverlist();
 
