@@ -21,6 +21,7 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     json.hpp \
     jsonparser.h \
-    paths.h
+    paths.h \
+    servers.h
 
 FORMS    += mainwindow.ui
