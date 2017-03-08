@@ -3,6 +3,7 @@
 
 #include "servers.h"
 
+#include <string>
 #include <vector>
 
 
@@ -15,6 +16,8 @@ public:
 
     void parse();
     void update();
+
+    Server *from_name(const std::string &name);
 };
 
 } // namespace steamcmd
