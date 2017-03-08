@@ -24,8 +24,8 @@ MainWindow::MainWindow(QWidget *parent)
     // Set the path to the SteamCMD executable as the text of lineEditSteamCMDExecutablePath
     ui->lineEditSteamCMDExecutablePath->setText(QString::fromStdString(m_settings["steamcmd"].get<std::string>()));
 
-    // Parse ~/.config/steamcmd-gui-qt/serverlist.json
-    parse_serverlist();
+    // Populate the List Widget displaying the server list
+    populate_serverlist_widget();
 }
 
 MainWindow::~MainWindow()
@@ -35,24 +35,15 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::parse_serverlist()
+void MainWindow::populate_serverlist_widget()
 {
-    // Clear 'm_serverlist'
-    m_serverlist.clear();
+    // Clear the List Widget displaying the server list
+    ui->listWidgetServerList->clear();
 
-    // Parse ~/.config/steamcmd-gui-qt/serverlist.json
-    steamcmd::JsonParser serverlist(steamcmd::PATH_SERVERLIST_JSON.fileName().toStdString());
-
-    for (auto it = serverlist.begin(); it != serverlist.end(); ++it)
+    // Populate it using the contents of 'm_serverlist'
+    for (auto it = m_serverlist.begin(); it != m_serverlist.end(); ++it)
     {
-        // Get server details
-        nlohmann::json details = it.value();
-
-        // Add the deserialized server item to the vector of servers
-        m_serverlist.push_back(steamcmd::Server(details["steamclient"].get<bool>(), details["steamcmd"].get<bool>(), details["anonymous"].get<bool>(), details["appid"].get<int>(), it.key()));
-
-        // Add the title to the List Widget displaying the server list
-        ui->listWidgetServerList->addItem(QString::fromStdString(it.key()));
+        ui->listWidgetServerList->addItem(QString::fromStdString(it->m_name));
     }
 }
 
@@ -87,15 +78,9 @@ void MainWindow::on_lineEditSteamCMDExecutablePath_textChanged(const QString &te
 
 void MainWindow::on_pushButtonServerListUpdate_clicked()
 {
-    // Clear the List Widget displaying the server list
-    ui->listWidgetServerList->clear();
-
     // Parse https://developer.valvesoftware.com/wiki/Dedicated_Servers_List
-    QProcess serverlist;
-
-    serverlist.start("python3 ./serverlist.py");
-    serverlist.waitForFinished();
+    m_serverlist.update();
 
     // Parse ~/.config/steamcmd-gui-qt/serverlist.json
-    parse_serverlist();
+    populate_serverlist_widget();
 }

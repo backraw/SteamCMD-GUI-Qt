@@ -3,10 +3,8 @@
 
 #include <QMainWindow>
 
-#include <vector>
-
 #include "settings.h"
-#include "servers.h"
+#include "serverlist.h"
 
 
 namespace Ui {
@@ -29,12 +27,12 @@ private slots:
     void on_pushButtonServerListUpdate_clicked();
 
 private:
-    void parse_serverlist();
+    void populate_serverlist_widget();
 
 private:
     Ui::MainWindow *ui;
 
-    std::vector<steamcmd::Server> m_serverlist;
+    steamcmd::ServerList m_serverlist;
     steamcmd::Settings m_settings;
 };
 
