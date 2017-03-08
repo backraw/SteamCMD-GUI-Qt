@@ -45,6 +45,9 @@ void MainWindow::parse_serverlist()
 
         // Add the deserialized server item to the vector of servers
         m_serverlist.push_back(steamcmd::Server(details["steamclient"].get<bool>(), details["steamcmd"].get<bool>(), details["anonymous"].get<bool>(), details["appid"].get<int>(), it.key()));
+
+        // Add the title to the List Widget displaying the server list
+        ui->listWidgetServerList->addItem(QString::fromStdString(it.key()));
     }
 }
 
