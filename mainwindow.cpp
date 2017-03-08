@@ -2,7 +2,10 @@
 #include "ui_mainwindow.h"
 
 #include <QDir>
+#include <QFile>
+#include <QFileInfo>
 #include <QFileDialog>
+#include <QPalette>
 
 #include "jsonparser.h"
 #include  "paths.h"
@@ -45,4 +48,20 @@ void MainWindow::parse_serverlist()
 void MainWindow::on_pushButtonSteamCMDExecutableBrowse_clicked()
 {
     ui->lineEditSteamCMDExecutablePath->setText(QFileDialog::getOpenFileName(this, "SteamCMD Executable", QDir::homePath()));
+}
+
+void MainWindow::on_lineEditSteamCMDExecutablePath_textChanged(const QString &text)
+{
+    // Get file information for the file path in 'text'
+    QFile file(text);
+    QFileInfo file_info(file);
+
+    // Add a color palette and set text color to:
+    // - Black if the file exists and is executable
+    // - Red if the file does not exist or is not executable
+    QPalette palette;
+    palette.setColor(QPalette::Text, (file.exists() && file_info.isFile() && file_info.isExecutable()) ? Qt::black : Qt::red);
+
+    // Update the respective LineEdit color using the palette
+    ui->lineEditSteamCMDExecutablePath->setPalette(palette);
 }
