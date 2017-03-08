@@ -18,6 +18,9 @@ MainWindow::MainWindow(QWidget *parent)
     , m_settings()
 {
     ui->setupUi(this);
+
+    // Set the path to the SteamCMD executable as the text of lineEditSteamCMDExecutablePath
+    ui->lineEditSteamCMDExecutablePath->setText(QString::fromStdString(m_settings["steamcmd"].get<std::string>()));
 }
 
 MainWindow::~MainWindow()
