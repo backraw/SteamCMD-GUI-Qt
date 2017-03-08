@@ -5,6 +5,7 @@
 
 #include <vector>
 
+#include "settings.h"
 #include "servers.h"
 
 
@@ -27,6 +28,7 @@ private:
     Ui::MainWindow *ui;
 
     std::vector<steamcmd::Server> m_serverlist;
+    steamcmd::Settings m_settings;
 };
 
 #endif // MAINWINDOW_H

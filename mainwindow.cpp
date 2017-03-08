@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , m_serverlist()
+    , m_settings()
 {
     ui->setupUi(this);
 }
