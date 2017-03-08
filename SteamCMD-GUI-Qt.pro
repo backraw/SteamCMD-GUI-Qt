@@ -24,12 +24,14 @@ QMAKE_EXTRA_TARGETS += serverlist
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    jsonparser.cpp
+    jsonparser.cpp \
+    settings.cpp
 
 HEADERS  += mainwindow.h \
     json.hpp \
     jsonparser.h \
     paths.h \
-    servers.h
+    servers.h \
+    settings.h
 
 FORMS    += mainwindow.ui
