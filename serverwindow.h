@@ -4,6 +4,7 @@
 #include <QFrame>
 
 #include "servers.h"
+#include "settings.h"
 
 
 namespace Ui {
@@ -18,7 +19,7 @@ public:
     explicit ServerWindow(QWidget *parent = 0);
     ~ServerWindow();
 
-    void setServer(const steamcmd::Server * const server);
+    void setServer(const steamcmd::Server * const server, const steamcmd::Settings *settings);
 
 private slots:
     void on_pushButtonLocalInstallationBrowse_clicked();
@@ -27,6 +28,7 @@ private:
     Ui::ServerWindow *ui;
 
 private:
+    const steamcmd::Settings *m_settings;
     const steamcmd::Server *m_server;
 };
 
