@@ -16,7 +16,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , m_label_status("Status: Idle")
+    , m_label_status()
     , m_serverlist()
     , m_settings()
 {
@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lineEditSteamCMDExecutablePath->setText(QString::fromStdString(m_settings["steamcmd"].get<std::string>()));
 
     // Setup 'm_label_status'
+    m_label_status.setText("Status: Idle");
     m_label_status.setIndent(3);
 
     // Add 'm_label_status' to the window's status bar
