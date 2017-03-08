@@ -51,9 +51,9 @@ void MainWindow::populate_serverlist_widget()
     ui->listWidgetServerList->clear();
 
     // Populate it using the contents of 'm_serverlist'
-    for (auto it = m_serverlist.begin(); it != m_serverlist.end(); ++it)
+    for (auto it : m_serverlist)
     {
-        ui->listWidgetServerList->addItem(QString::fromStdString(it->m_name));
+        ui->listWidgetServerList->addItem(QString::fromStdString(it.m_name));
     }
 }
 
