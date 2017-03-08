@@ -15,9 +15,11 @@ TEMPLATE = app
 QMAKE_CXXFLAGS += -std=c++11
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    jsonparser.cpp
 
 HEADERS  += mainwindow.h \
-    json.hpp
+    json.hpp \
+    jsonparser.h
 
 FORMS    += mainwindow.ui
