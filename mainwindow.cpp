@@ -85,9 +85,16 @@ void MainWindow::on_lineEditSteamCMDExecutablePath_textChanged(const QString &te
 
 void MainWindow::on_pushButtonServerListUpdate_clicked()
 {
+    // TODO: run updates in a different thread!
+
     // Parse https://developer.valvesoftware.com/wiki/Dedicated_Servers_List
+    m_label_status.setText("Status: Parsing https://developer.valvesoftware.com/wiki/Dedicated_Servers_List...");
     m_serverlist.update();
 
     // Parse ~/.config/steamcmd-gui-qt/serverlist.json
+    m_label_status.setText("Status: Parsing ~/.config/steamcmd-gui-qt/serverlist.json...");
     populate_serverlist_widget();
+
+    // Reset status bar text
+    m_label_status.setText("Status: Idle");
 }
