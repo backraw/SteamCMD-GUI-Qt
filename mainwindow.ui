@@ -13,7 +13,44 @@
   <property name="windowTitle">
    <string>SteamCMD GUI Qt</string>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QGroupBox" name="groupBoxSteamCMDExecutable">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>371</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>SteamCMD Executable</string>
+    </property>
+    <widget class="QLineEdit" name="lineEditSteamCMDExecutablePath">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>351</width>
+       <height>27</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonSteamCMDExecutableBrowse">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>85</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Browse</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
