@@ -1,6 +1,10 @@
 #include "serverwindow.h"
 #include "ui_serverwindow.h"
 
+#include <QDir>
+#include <QFileDialog>
+
+
 ServerWindow::ServerWindow(QWidget *parent)
     : QFrame(parent)
     , ui(new Ui::ServerWindow)
@@ -19,4 +23,9 @@ void ServerWindow::setServer(const steamcmd::Server * const server)
 {
     m_server = server;
     setWindowTitle(QString::fromStdString(server->m_name));
+}
+
+void ServerWindow::on_pushButtonLocalInstallationBrowse_clicked()
+{
+    ui->lineEditLocalInstallationPath->setText(QFileDialog::getExistingDirectory(this, QString::fromStdString(m_server->m_name) + ": Server Installation Path", QDir::homePath()));
 }

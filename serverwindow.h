@@ -20,6 +20,9 @@ public:
 
     void setServer(const steamcmd::Server * const server);
 
+private slots:
+    void on_pushButtonLocalInstallationBrowse_clicked();
+
 private:
     Ui::ServerWindow *ui;
 
