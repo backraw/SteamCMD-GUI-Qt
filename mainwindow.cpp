@@ -9,7 +9,7 @@
 #include <QProcess>
 
 #include "jsonparser.h"
-#include  "paths.h"
+#include "paths.h"
 #include "servers.h"
 
 
