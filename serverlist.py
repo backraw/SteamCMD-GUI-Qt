@@ -82,6 +82,8 @@ class ServerList(dict):
                     while name[0] == ' ':
                         name = name[1:]
 
+                    name = name[:name.find('Dedicated')]
+
                     # Create a new section for this dedicated server
                     server = self[name] = dict()
 
