@@ -80,6 +80,7 @@ void MainWindow::on_lineEditSteamCMDExecutablePath_textChanged(const QString &te
     if (is_executable)
     {
         m_settings["steamcmd"] = text.toStdString();
+        m_label_status.setText("Status: Path to the SteamCMD executable has been saved");
     }
 }
 
