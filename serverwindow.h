@@ -18,13 +18,13 @@ public:
     explicit ServerWindow(QWidget *parent = 0);
     ~ServerWindow();
 
-    void setServer(steamcmd::Server *server);
+    void setServer(const steamcmd::Server * const server);
 
 private:
     Ui::ServerWindow *ui;
 
 private:
-    steamcmd::Server *m_server;
+    const steamcmd::Server *m_server;
 };
 
 #endif // SERVERWINDOW_H

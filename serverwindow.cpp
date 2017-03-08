@@ -15,7 +15,7 @@ ServerWindow::~ServerWindow()
     delete ui;
 }
 
-void ServerWindow::setServer(steamcmd::Server *server)
+void ServerWindow::setServer(const steamcmd::Server * const server)
 {
     m_server = server;
     setWindowTitle(QString::fromStdString(server->m_name));
