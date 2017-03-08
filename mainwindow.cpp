@@ -23,6 +23,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Set the path to the SteamCMD executable as the text of lineEditSteamCMDExecutablePath
     ui->lineEditSteamCMDExecutablePath->setText(QString::fromStdString(m_settings["steamcmd"].get<std::string>()));
+
+    // Parse ~/.config/steamcmd-gui-qt/serverlist.json
+    parse_serverlist();
 }
 
 MainWindow::~MainWindow()
