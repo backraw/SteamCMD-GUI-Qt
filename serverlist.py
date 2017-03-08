@@ -82,7 +82,15 @@ class ServerList(dict):
                     while name[0] == ' ':
                         name = name[1:]
 
-                    name = name[:name.find('Dedicated')]
+                    index = name.lower().find(' - dedicated server')
+
+                    if index == -1:
+                        index = name.lower().find('- dedicated server')
+
+                    if index == -1:
+                        index = name.lower().find(' dedicated server')
+
+                    name = name[:index]
 
                     # Create a new section for this dedicated server
                     server = self[name] = dict()
