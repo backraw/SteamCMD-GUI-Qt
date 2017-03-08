@@ -25,6 +25,12 @@ MainWindow::MainWindow(QWidget *parent)
     // Set the path to the SteamCMD executable as the text of lineEditSteamCMDExecutablePath
     ui->lineEditSteamCMDExecutablePath->setText(QString::fromStdString(m_settings["steamcmd"].get<std::string>()));
 
+    // Setup 'm_label_status'
+    m_label_status.setIndent(3);
+
+    // Add 'm_label_status' to the window's status bar
+    statusBar()->addWidget(&m_label_status);
+
     // Populate the List Widget displaying the server list
     populate_serverlist_widget();
 }
