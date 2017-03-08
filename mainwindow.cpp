@@ -102,3 +102,15 @@ void MainWindow::on_pushButtonServerListUpdate_clicked()
     // Reset status bar text
     m_label_status.setText("Status: Idle");
 }
+
+void MainWindow::on_listWidgetServerList_doubleClicked(const QModelIndex &index)
+{
+    // Get the selected item's name
+    const QString name = ui->listWidgetServerList->item(index.row())->text();
+
+    // Prepare 'm_server_window'
+    m_server_window.setServer(m_serverlist.from_name(name.toStdString()));
+
+    // Show 'm_server_window'
+    m_server_window.show();
+}
