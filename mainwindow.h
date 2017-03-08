@@ -26,6 +26,8 @@ private slots:
 
     void on_lineEditSteamCMDExecutablePath_textChanged(const QString &text);
 
+    void on_pushButtonServerListUpdate_clicked();
+
 private:
     void parse_serverlist();
 

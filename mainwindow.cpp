@@ -6,9 +6,11 @@
 #include <QFileInfo>
 #include <QFileDialog>
 #include <QPalette>
+#include <QProcess>
 
 #include "jsonparser.h"
 #include  "paths.h"
+#include "servers.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -78,4 +80,19 @@ void MainWindow::on_lineEditSteamCMDExecutablePath_textChanged(const QString &te
     {
         m_settings["steamcmd"] = text.toStdString();
     }
+}
+
+void MainWindow::on_pushButtonServerListUpdate_clicked()
+{
+    // Clear the List Widget displaying the server list
+    ui->listWidgetServerList->clear();
+
+    // Parse https://developer.valvesoftware.com/wiki/Dedicated_Servers_List
+    QProcess serverlist;
+
+    serverlist.start("python3 ./serverlist.py");
+    serverlist.waitForFinished();
+
+    // Parse ~/.config/steamcmd-gui-qt/serverlist.json
+    parse_serverlist();
 }
