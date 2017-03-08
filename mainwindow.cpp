@@ -16,6 +16,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , m_label_status("Status: Idle")
     , m_serverlist()
     , m_settings()
 {

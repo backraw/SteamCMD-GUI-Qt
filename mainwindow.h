@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QLabel>
 #include <QMainWindow>
 
 #include "settings.h"
@@ -31,7 +32,9 @@ private:
 
 private:
     Ui::MainWindow *ui;
+    QLabel m_label_status;
 
+private:
     steamcmd::ServerList m_serverlist;
     steamcmd::Settings m_settings;
 };
