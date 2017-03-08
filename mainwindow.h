@@ -24,12 +24,12 @@ public:
     ~MainWindow();
 
 private slots:
+    // GroupBox: SteamCMD Executable
     void on_pushButtonSteamCMDExecutableBrowse_clicked();
-
     void on_lineEditSteamCMDExecutablePath_textChanged(const QString &text);
 
+    // GroupBox: Server List
     void on_pushButtonServerListUpdate_clicked();
-
     void on_listWidgetServerList_doubleClicked(const QModelIndex &index);
 
 private:
