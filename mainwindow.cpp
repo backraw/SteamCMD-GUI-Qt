@@ -59,12 +59,20 @@ void MainWindow::on_lineEditSteamCMDExecutablePath_textChanged(const QString &te
     QFile file(text);
     QFileInfo file_info(file);
 
+    const bool is_executable = file.exists() && file_info.isFile() && file_info.isExecutable();
+
     // Add a color palette and set text color to:
     // - Black if the file exists and is executable
     // - Red if the file does not exist or is not executable
     QPalette palette;
-    palette.setColor(QPalette::Text, (file.exists() && file_info.isFile() && file_info.isExecutable()) ? Qt::black : Qt::red);
+    palette.setColor(QPalette::Text, is_executable ? Qt::black : Qt::red);
 
     // Update the respective LineEdit color using the palette
     ui->lineEditSteamCMDExecutablePath->setPalette(palette);
+
+    // Store the new text as the value of 'steamcmd' in ~/.config/steamcmd-gui-qt/settings.json if the file is executable
+    if (is_executable)
+    {
+        m_settings["steamcmd"] = text.toStdString();
+    }
 }
