@@ -26,7 +26,8 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     jsonparser.cpp \
     settings.cpp \
-    serverlist.cpp
+    serverlist.cpp \
+    serverwindow.cpp
 
 HEADERS  += mainwindow.h \
     json.hpp \
@@ -34,6 +35,8 @@ HEADERS  += mainwindow.h \
     paths.h \
     servers.h \
     settings.h \
-    serverlist.h
+    serverlist.h \
+    serverwindow.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    serverwindow.ui
