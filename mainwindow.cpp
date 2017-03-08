@@ -4,11 +4,14 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , m_serverlist()
 {
     ui->setupUi(this);
 }
 
 MainWindow::~MainWindow()
 {
+    m_serverlist.clear();
+
     delete ui;
 }
