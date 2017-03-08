@@ -21,6 +21,9 @@ public:
     ~MainWindow();
 
 private:
+    void parse_serverlist();
+
+private:
     Ui::MainWindow *ui;
 
     std::vector<steamcmd::Server> m_serverlist;
