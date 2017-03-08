@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "ui_serverwindow.h"
 
 #include <QDir>
 #include <QFile>
@@ -17,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , m_label_status()
+    , m_server_window()
     , m_serverlist()
     , m_settings()
 {

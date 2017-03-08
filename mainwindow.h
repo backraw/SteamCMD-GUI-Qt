@@ -4,6 +4,8 @@
 #include <QLabel>
 #include <QMainWindow>
 
+#include "serverwindow.h"
+
 #include "settings.h"
 #include "serverlist.h"
 
@@ -33,6 +35,7 @@ private:
 private:
     Ui::MainWindow *ui;
     QLabel m_label_status;
+    ServerWindow m_server_window;
 
 private:
     steamcmd::ServerList m_serverlist;
