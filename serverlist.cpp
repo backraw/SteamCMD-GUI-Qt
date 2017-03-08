@@ -50,17 +50,16 @@ void ServerList::update()
     parse();
 }
 
-Server *ServerList::from_name(const std::__cxx11::string &name)
+const Server &ServerList::from_name(const std::__cxx11::string &name)
 {
-    for (auto it = begin(); it != end(); ++it)
+    auto it = begin();
+
+    while (it->m_name != name && it != end())
     {
-        if (it->m_name == name)
-        {
-            return &(*it);
-        }
+        ++it;
     }
 
-    return nullptr;
+    return *it;
 }
 
 } // namespace steamcmd
