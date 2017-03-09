@@ -27,6 +27,8 @@ private slots:
 
     void on_listWidgetLocalInstallations_clicked(const QModelIndex &index);
 
+    void on_pushButtonLocalInstallationsRemove_clicked();
+
 private:
     Ui::ServerWindow *ui;
 

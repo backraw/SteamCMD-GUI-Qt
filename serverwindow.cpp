@@ -42,3 +42,9 @@ void ServerWindow::on_listWidgetLocalInstallations_clicked(const QModelIndex &in
     // Enable the button 'Remove'
     ui->pushButtonLocalInstallationsRemove->setDisabled(false);
 }
+
+void ServerWindow::on_pushButtonLocalInstallationsRemove_clicked()
+{
+    // Remove the selected ListWidget item
+    ui->listWidgetLocalInstallations->removeItemWidget(ui->listWidgetLocalInstallations->selectedItems().at(0));
+}
