@@ -36,3 +36,9 @@ void ServerWindow::setServer(const steamcmd::Server * const server, const steamc
 void ServerWindow::on_pushButtonLocalInstallationsAdd_clicked()
 {
 }
+
+void ServerWindow::on_listWidgetLocalInstallations_clicked(const QModelIndex &index)
+{
+    // Enable the button 'Remove'
+    ui->pushButtonLocalInstallationsRemove->setDisabled(false);
+}

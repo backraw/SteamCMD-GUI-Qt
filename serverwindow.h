@@ -2,6 +2,7 @@
 #define SERVERWINDOW_H
 
 #include <QFrame>
+#include <QModelIndex>
 
 #include "servers.h"
 #include "settings.h"
@@ -23,6 +24,8 @@ public:
 
 private slots:
     void on_pushButtonLocalInstallationsAdd_clicked();
+
+    void on_listWidgetLocalInstallations_clicked(const QModelIndex &index);
 
 private:
     Ui::ServerWindow *ui;
