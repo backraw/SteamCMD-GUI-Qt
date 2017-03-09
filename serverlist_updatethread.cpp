@@ -11,9 +11,13 @@ ServerListUpdateThread::ServerListUpdateThread(ServerList *serverlist, QLabel *l
 
 void ServerListUpdateThread::run()
 {
+    // Set status
     m_label_status->setText("Status: Parsing remote Dedicated Server List...");
+
+    // Update the server list vector
     m_serverlist->update();
 
+    // emit signal finished()
     emit finished();
 }
 
