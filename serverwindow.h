@@ -22,7 +22,7 @@ public:
     void setServer(const steamcmd::Server * const server, const steamcmd::Settings *settings);
 
 private slots:
-    void on_pushButtonLocalInstallationsBrowse_clicked();
+    void on_pushButtonLocalInstallationsAdd_clicked();
 
 private:
     Ui::ServerWindow *ui;

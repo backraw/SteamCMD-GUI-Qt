@@ -30,7 +30,6 @@ void ServerWindow::setServer(const steamcmd::Server * const server, const steamc
     setWindowTitle(QString::fromStdString(server->m_name));
 }
 
-void ServerWindow::on_pushButtonLocalInstallationsBrowse_clicked()
+void ServerWindow::on_pushButtonLocalInstallationsAdd_clicked()
 {
-    ui->lineEditLocalInstallationsPath->setText(QFileDialog::getExistingDirectory(this, QString::fromStdString(m_server->m_name) + ": Server Installation Path", QDir::homePath()));
 }

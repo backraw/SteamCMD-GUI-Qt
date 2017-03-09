@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>387</width>
-    <height>162</height>
+    <height>298</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,33 +25,46 @@
      <x>10</x>
      <y>10</y>
      <width>361</width>
-     <height>81</height>
+     <height>271</height>
     </rect>
    </property>
    <property name="title">
     <string>Local Installations</string>
    </property>
-   <widget class="QLineEdit" name="lineEditLocalInstallationsPath">
+   <widget class="QPushButton" name="pushButtonLocalInstallationsAdd">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>20</y>
-      <width>351</width>
-      <height>27</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButtonLocalInstallationsBrowse">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>50</y>
+      <y>240</y>
       <width>85</width>
       <height>27</height>
      </rect>
     </property>
     <property name="text">
-     <string>Browse</string>
+     <string>Add</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidgetLocalInstallations">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>351</width>
+      <height>201</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonLocalInstallationsRemove">
+    <property name="geometry">
+     <rect>
+      <x>276</x>
+      <y>240</y>
+      <width>85</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Remove</string>
     </property>
    </widget>
   </widget>
