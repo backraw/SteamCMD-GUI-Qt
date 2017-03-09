@@ -29,9 +29,9 @@
     </rect>
    </property>
    <property name="title">
-    <string>Local Installation</string>
+    <string>Local Installations</string>
    </property>
-   <widget class="QLineEdit" name="lineEditLocalInstallationPath">
+   <widget class="QLineEdit" name="lineEditLocalInstallationsPath">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -41,7 +41,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButtonLocalInstallationBrowse">
+   <widget class="QPushButton" name="pushButtonLocalInstallationsBrowse">
     <property name="geometry">
      <rect>
       <x>10</x>
