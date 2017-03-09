@@ -12,6 +12,9 @@ ServerWindow::ServerWindow(QWidget *parent)
     , m_server(nullptr)
 {
     ui->setupUi(this);
+
+    // Disable the button 'Remove' on object creation
+    ui->pushButtonLocalInstallationsRemove->setDisabled(true);
 }
 
 ServerWindow::~ServerWindow()
