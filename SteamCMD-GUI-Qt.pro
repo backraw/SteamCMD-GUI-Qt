@@ -27,7 +27,8 @@ SOURCES += main.cpp\
     jsonparser.cpp \
     settings.cpp \
     serverlist.cpp \
-    serverwindow.cpp
+    serverwindow.cpp \
+    serverlist_updatethread.cpp
 
 HEADERS  += mainwindow.h \
     json.hpp \
@@ -36,7 +37,8 @@ HEADERS  += mainwindow.h \
     servers.h \
     settings.h \
     serverlist.h \
-    serverwindow.h
+    serverwindow.h \
+    serverlist_updatethread.h
 
 FORMS    += mainwindow.ui \
     serverwindow.ui
