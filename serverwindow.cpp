@@ -8,6 +8,7 @@
 ServerWindow::ServerWindow(QWidget *parent)
     : QFrame(parent)
     , ui(new Ui::ServerWindow)
+    , m_settings(nullptr)
     , m_server(nullptr)
 {
     ui->setupUi(this);
@@ -16,6 +17,8 @@ ServerWindow::ServerWindow(QWidget *parent)
 ServerWindow::~ServerWindow()
 {
     m_server = nullptr;
+    m_settings = nullptr;
+
     delete ui;
 }
 
