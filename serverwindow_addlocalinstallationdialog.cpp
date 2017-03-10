@@ -26,5 +26,7 @@ void ServerWindow_AddLocalInstallationDialog::keyPressEvent(QKeyEvent *e)
 
 void ServerWindow_AddLocalInstallationDialog::on_pushButtonAddLocalInstallationBrowse_clicked()
 {
+    // Open a QFileDialog to browse to a folder and set its path as the text of
+    // lineEditAddLocalInstallationPath
     ui->lineEditAddLocalInstallationPath->setText(QFileDialog::getExistingDirectory(this, "Add Local Installation", QDir::home().absolutePath()));
 }
