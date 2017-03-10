@@ -17,7 +17,7 @@ public:
     void parse();
     void update();
 
-    const Server &from_name(const std::string &name);
+    Server &from_name(const std::string &name);
 };
 
 } // namespace steamcmd
