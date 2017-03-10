@@ -19,11 +19,11 @@ Settings::Settings()
     // ~/.config/steamcmd-gui-qt/settings.json
     if (!path_exists || (path_exists && !QFile(QString::fromStdString(((*this)["steamcmd"]).get<std::string>())).exists()))
     {
-        find_steamcmd();
+        findSteamCMD();
     }
 }
 
-const std::string Settings::find_steamcmd(const std::string executable, const int tries)
+const std::string Settings::findSteamCMD(const std::string executable, const int tries)
 {
     // Find the SteamCMD executable
     QProcess which;
@@ -37,7 +37,7 @@ const std::string Settings::find_steamcmd(const std::string executable, const in
     // If empty, look for 'steamcmd.sh'
     if (path.empty() && tries < 2)
     {
-        return find_steamcmd("steamcmd.sh", tries + 1);
+        return findSteamCMD("steamcmd.sh", tries + 1);
     }
 
     // Return the path found

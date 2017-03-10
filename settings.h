@@ -13,7 +13,7 @@ class Settings : public JsonParser
 public:
     Settings();
 
-    const std::string find_steamcmd(const std::string executable = "steamcmd", const int tries = 0);
+    const std::string findSteamCMD(const std::string executable = "steamcmd", const int tries = 0);
 };
 
 } // namespace steamcmd

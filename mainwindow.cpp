@@ -160,7 +160,7 @@ void MainWindow::on_server_window_closed()
 void MainWindow::on_pushButtonSteamCMDExecutableFind_clicked()
 {
     // Find the SteamCMD executable and store it in the settings.json file
-    const QString path = QString::fromStdString(m_settings.find_steamcmd());
+    const QString path = QString::fromStdString(m_settings.findSteamCMD());
 
     // Set it as the current path
     ui->lineEditSteamCMDExecutablePath->setText(path);
