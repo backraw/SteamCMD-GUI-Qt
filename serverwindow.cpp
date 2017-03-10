@@ -84,8 +84,34 @@ void ServerWindow::on_listWidgetLocalInstallations_clicked(const QModelIndex &in
 
 void ServerWindow::on_pushButtonLocalInstallationsRemove_clicked()
 {
-    // Remove the selected ListWidget item
-    ui->listWidgetLocalInstallations->removeItemWidget(ui->listWidgetLocalInstallations->selectedItems().at(0));
+    // Loop through all items in the list widget
+    for (int i = 0; i < ui->listWidgetLocalInstallations->count(); i++)
+    {
+        // Get the item at the current row
+        QListWidgetItem *item = ui->listWidgetLocalInstallations->item(i);
+
+        // Handle item removal if the item is selected
+        if (item->isSelected())
+        {
+            // Remove it from the list widget
+            ui->listWidgetLocalInstallations->takeItem(i);
+
+            // Get the list widget's text
+            const std::string text = item->text().toStdString();
+
+            // Remove the path from settings.json
+            if (m_settings->count(m_server->m_name) > 0)
+            {
+                (*m_settings)[m_server->m_name].erase((*m_settings)[m_server->m_name].find(text));
+            }
+
+            // If the array of paths is empty, remove the server from settings.json
+            if ((*m_settings)[m_server->m_name].size() == 0)
+            {
+                m_settings->erase(m_settings->find(m_server->m_name));
+            }
+        }
+    }
 }
 
 void ServerWindow::on_pathSelected(const std::string &path)
