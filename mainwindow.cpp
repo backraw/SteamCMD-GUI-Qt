@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "ui_serverwindow.h"
 
+#include <QColor>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
@@ -55,7 +56,14 @@ void MainWindow::populate_serverlist_widget()
     // Populate it using the contents of 'm_serverlist'
     for (auto it : m_serverlist)
     {
-        ui->listWidgetServerList->addItem(QString::fromStdString(it.m_name));
+        QListWidgetItem *item = new QListWidgetItem(QString::fromStdString(it.m_name));
+
+        if (m_settings.count(it.m_name) == 0)
+        {
+            item->setTextColor(QColor::fromRgb(0, 0, 0, 90));
+        }
+
+        ui->listWidgetServerList->addItem(item);
     }
 }
 
