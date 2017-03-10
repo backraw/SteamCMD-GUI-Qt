@@ -147,3 +147,9 @@ void MainWindow::on_serverlist_updatethread_finished()
     // Reset status
     m_label_status.setText("Status: Idle");
 }
+
+void MainWindow::on_server_window_closed()
+{
+    // Refresh the server list widget after the ServerWindow instance has been closed
+    populate_serverlist_widget();
+}

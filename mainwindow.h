@@ -32,8 +32,9 @@ private slots:
     void on_pushButtonServerListUpdate_clicked();
     void on_listWidgetServerList_doubleClicked(const QModelIndex &index);
 
-    // ServerListUpdateThread::finished()
+    // Others
     void on_serverlist_updatethread_finished();
+    void on_server_window_closed();
 
 private:
     void populate_serverlist_widget();
