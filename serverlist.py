@@ -42,8 +42,10 @@ class ServerList(dict):
 
     def dump(self):
         """Write the contents of this dict to file."""
+        s = dict([key, self[key]] for key in sorted(self))
+
         with open(SERVERLIST_JSON, 'w') as f:
-            json_dump(self, f, indent=4)
+            json_dump(s, f, indent=4)
             f.write('\n')
 
     def parse(self):
