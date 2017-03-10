@@ -23,8 +23,8 @@ signals:
     void finished();
 
 private:
-    QLabel *m_label_status;
     ServerList *m_serverlist;
+    QLabel *m_label_status;
 };
 
 } // namespace steamcmd
