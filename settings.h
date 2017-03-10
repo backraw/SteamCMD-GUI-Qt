@@ -1,6 +1,8 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
+#include <string>
+
 #include "jsonparser.h"
 
 
@@ -11,8 +13,7 @@ class Settings : public JsonParser
 public:
     Settings();
 
-private:
-    void find_steamcmd();
+    const std::string find_steamcmd(const std::string executable = "steamcmd", const int tries = 0);
 };
 
 } // namespace steamcmd

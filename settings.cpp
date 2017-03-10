@@ -23,16 +23,25 @@ Settings::Settings()
     }
 }
 
-void Settings::find_steamcmd()
+const std::string Settings::find_steamcmd(const std::string executable, const int tries)
 {
     // Find the SteamCMD executable
     QProcess which;
-    which.start("which steamcmd");
+    which.start(QString::fromStdString("which " + executable));
     which.waitForFinished();
 
-    // Parse its output and put it as the value of key 'steamcmd'
+    // Parse its output
     QByteArray output = which.readAllStandardOutput();
-    (*this)["steamcmd"] = QTextCodec::codecForMib(106)->toUnicode(output.split('\n')[0]).toStdString();
+    const std::string path = QTextCodec::codecForMib(106)->toUnicode(output.split('\n')[0]).toStdString();
+
+    // If empty, look for 'steamcmd.sh'
+    if (path.empty() && tries < 2)
+    {
+        return find_steamcmd("steamcmd.sh", tries + 1);
+    }
+
+    // Return the path found
+    return path;
 }
 
 } // namespace steamcmd
