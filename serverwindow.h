@@ -1,6 +1,7 @@
 #ifndef SERVERWINDOW_H
 #define SERVERWINDOW_H
 
+#include "serverwindow_addlocalinstallationdialog.h"
 #include <QFrame>
 #include <QModelIndex>
 
@@ -31,6 +32,7 @@ private slots:
 
 private:
     Ui::ServerWindow *ui;
+    ServerWindow_AddLocalInstallationDialog *m_add_local_installation_dialog;
 
 private:
     const steamcmd::Settings *m_settings;

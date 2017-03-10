@@ -8,6 +8,7 @@
 ServerWindow::ServerWindow(QWidget *parent)
     : QFrame(parent)
     , ui(new Ui::ServerWindow)
+    , m_add_local_installation_dialog(nullptr)
     , m_settings(nullptr)
     , m_server(nullptr)
 {
@@ -22,6 +23,12 @@ ServerWindow::ServerWindow(QWidget *parent)
 
 ServerWindow::~ServerWindow()
 {
+    if (m_add_local_installation_dialog != nullptr)
+    {
+        delete m_add_local_installation_dialog;
+    }
+
+    m_add_local_installation_dialog = nullptr;
     m_server = nullptr;
     m_settings = nullptr;
 
