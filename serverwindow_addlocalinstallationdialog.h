@@ -2,6 +2,8 @@
 #define SERVERWINDOW_ADDLOCALINSTALLATIONDIALOG_H
 
 #include <QFrame>
+#include <QKeyEvent>
+
 
 namespace Ui {
 class ServerWindow_AddLocalInstallationDialog;
@@ -14,6 +16,9 @@ class ServerWindow_AddLocalInstallationDialog : public QFrame
 public:
     explicit ServerWindow_AddLocalInstallationDialog(QWidget *parent = 0);
     ~ServerWindow_AddLocalInstallationDialog();
+
+protected:
+    void keyPressEvent(QKeyEvent *e);
 
 private slots:
     void on_pushButtonAddLocalInstallationBrowse_clicked();
