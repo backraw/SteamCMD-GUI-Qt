@@ -38,7 +38,7 @@ private slots:
     void on_server_window_closed();
 
 private:
-    void populate_serverlist_widget();
+    void populateServerlistWidget();
 
 private:
     Ui::MainWindow *ui;

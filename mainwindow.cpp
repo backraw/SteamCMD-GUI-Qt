@@ -41,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent)
     statusBar()->addWidget(&m_label_status);
 
     // Populate the List Widget displaying the server list
-    populate_serverlist_widget();
+    populateServerlistWidget();
 }
 
 MainWindow::~MainWindow()
@@ -51,7 +51,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::populate_serverlist_widget()
+void MainWindow::populateServerlistWidget()
 {
     // Clear the List Widget displaying the server list
     ui->listWidgetServerList->clear();
@@ -145,7 +145,7 @@ void MainWindow::on_serverlist_updatethread_finished()
 
     // Populate the Server List ListWidget with items parsed into
     // ~/.config/steamcmd-gui-qt/serverlist.json
-    populate_serverlist_widget();
+    populateServerlistWidget();
 
     // Reset status
     m_label_status.setText("Status: Idle");
@@ -154,7 +154,7 @@ void MainWindow::on_serverlist_updatethread_finished()
 void MainWindow::on_server_window_closed()
 {
     // Refresh the server list widget after the ServerWindow instance has been closed
-    populate_serverlist_widget();
+    populateServerlistWidget();
 }
 
 void MainWindow::on_pushButtonSteamCMDExecutableFind_clicked()
