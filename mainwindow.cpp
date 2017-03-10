@@ -156,3 +156,12 @@ void MainWindow::on_server_window_closed()
     // Refresh the server list widget after the ServerWindow instance has been closed
     populate_serverlist_widget();
 }
+
+void MainWindow::on_pushButtonSteamCMDExecutableFind_clicked()
+{
+    // Find the SteamCMD executable and store it in the settings.json file
+    const QString path = QString::fromStdString(m_settings.find_steamcmd());
+
+    // Set it as the current path
+    ui->lineEditSteamCMDExecutablePath->setText(path);
+}

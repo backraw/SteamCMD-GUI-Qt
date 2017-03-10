@@ -27,6 +27,7 @@ private slots:
     // GroupBox: SteamCMD Executable
     void on_pushButtonSteamCMDExecutableBrowse_clicked();
     void on_lineEditSteamCMDExecutablePath_textChanged(const QString &text);
+    void on_pushButtonSteamCMDExecutableFind_clicked();
 
     // GroupBox: Server List
     void on_pushButtonServerListUpdate_clicked();
