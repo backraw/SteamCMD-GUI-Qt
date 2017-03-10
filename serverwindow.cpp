@@ -35,8 +35,15 @@ ServerWindow::~ServerWindow()
     delete ui;
 }
 
-void ServerWindow::setServer(const steamcmd::Server * const server, const steamcmd::Settings *settings)
+void ServerWindow::setServer(steamcmd::Server *server, steamcmd::Settings *settings)
 {
+    if (m_add_local_installation_dialog != nullptr)
+    {
+        delete m_add_local_installation_dialog;
+    }
+
+    m_add_local_installation_dialog = new ServerWindow_AddLocalInstallationDialog();
+
     m_server = server;
     m_settings = settings;
 
