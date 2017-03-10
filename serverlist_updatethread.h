@@ -9,12 +9,12 @@
 
 namespace steamcmd {
 
-class ServerListUpdateThread : public QObject
+class ServerList_UpdateThread : public QObject
 {
     Q_OBJECT
 
 public:
-    ServerListUpdateThread(ServerList *serverlist, QLabel *label_status);
+    ServerList_UpdateThread(ServerList *serverlist, QLabel *label_status);
 
 public slots:
     void run();

@@ -112,7 +112,7 @@ void MainWindow::on_pushButtonServerListUpdate_clicked()
     QThread *thread = new QThread();
 
     // Create a worker and move it to the thread
-    steamcmd::ServerListUpdateThread *worker = new steamcmd::ServerListUpdateThread(&m_serverlist, &m_label_status);
+    auto *worker = new steamcmd::ServerList_UpdateThread(&m_serverlist, &m_label_status);
     worker->moveToThread(thread);
 
     // Connect signals and slots
