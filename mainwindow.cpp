@@ -30,6 +30,9 @@ MainWindow::MainWindow(QWidget *parent)
     // Set the path to the SteamCMD executable as the text of lineEditSteamCMDExecutablePath
     ui->lineEditSteamCMDExecutablePath->setText(QString::fromStdString(m_settings["steamcmd"].get<std::string>()));
 
+    // Connect signals and slots
+    QObject::connect(&m_server_window, SIGNAL(onClosed()), this, SLOT(on_server_window_closed()));
+
     // Setup 'm_label_status'
     m_label_status.setText("Status: Idle");
     m_label_status.setIndent(3);
