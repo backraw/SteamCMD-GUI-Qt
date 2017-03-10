@@ -43,6 +43,7 @@ void ServerWindow::setServer(steamcmd::Server *server, steamcmd::Settings *setti
     }
 
     m_add_local_installation_dialog = new ServerWindow_AddLocalInstallationDialog();
+    QObject::connect(m_add_local_installation_dialog, SIGNAL(pathSelected(std::string)), this, SLOT(on_pathSelected(std::string)));
 
     m_server = server;
     m_settings = settings;
