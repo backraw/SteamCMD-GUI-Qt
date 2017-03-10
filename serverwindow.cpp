@@ -84,6 +84,9 @@ void ServerWindow::on_listWidgetLocalInstallations_clicked(const QModelIndex &in
 {
     // Enable the button 'Remove'
     ui->pushButtonLocalInstallationsRemove->setDisabled(false);
+
+    // Get rid of the compiler warning that says 'index' is unused
+    static_cast<void>(index);
 }
 
 void ServerWindow::on_pushButtonLocalInstallationsRemove_clicked()
