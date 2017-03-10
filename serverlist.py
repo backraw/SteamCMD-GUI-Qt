@@ -79,23 +79,16 @@ class ServerList(dict):
                     td_name = tr.next_element.next_element
 
                     # Get the server's name
-                    name = td_name.get_text()
+                    name = [x for x in td_name.get_text().split() if x]
 
-                    while name[0] == ' ':
-                        name = name[1:]
+                    if 'Dedicated' in name:
+                        name.remove('Dedicated')
 
-                    index = name.lower().find(' - dedicated server')
-
-                    if index == -1:
-                        index = name.lower().find('- dedicated server')
-
-                    if index == -1:
-                        index = name.lower().find(' dedicated server')
-
-                    name = name[:index]
+                    while name[-1].lower() in ('server', 'server]', '-', 'linux'):
+                        name.pop()
 
                     # Create a new section for this dedicated server
-                    server = self[name] = dict()
+                    server = self[' '.join(name)] = dict()
 
                     # Parse this server's information
                     td = self._parse_td(td_name, server, 'appid')
