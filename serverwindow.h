@@ -21,7 +21,7 @@ public:
     explicit ServerWindow(QWidget *parent = 0);
     ~ServerWindow();
 
-    void setServer(const steamcmd::Server * const server, const steamcmd::Settings *settings);
+    void setServer(const steamcmd::Server * const server, steamcmd::Settings *settings);
 
 private slots:
     void on_pushButtonLocalInstallationsAdd_clicked();
@@ -37,7 +37,7 @@ private:
     ServerWindow_AddLocalInstallationDialog *m_add_local_installation_dialog;
 
 private:
-    const steamcmd::Settings *m_settings;
+    steamcmd::Settings *m_settings;
     const steamcmd::Server *m_server;
 };
 
