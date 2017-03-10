@@ -118,8 +118,9 @@ void ServerWindow::on_pathSelected(const std::string &path)
 {
     // Get a QString object from 'path'
     const QString qpath = QString::fromStdString(path);
+    const QDir dir = QDir(qpath);
 
-    if (QDir(qpath).exists())
+    if (dir.exists() && !dir.isRoot() && QFileInfo(dir.absolutePath()).isWritable())
     {
         // Add the path to the list widget
         ui->listWidgetLocalInstallations->addItem(qpath);
