@@ -22,6 +22,7 @@ protected:
 
 private slots:
     void on_pushButtonAddLocalInstallationBrowse_clicked();
+    void on_pushButtonAddLocalInstallationOK_clicked();
 
 signals:
     void pathSelected(const std::string &path);

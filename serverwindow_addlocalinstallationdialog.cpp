@@ -30,3 +30,9 @@ void ServerWindow_AddLocalInstallationDialog::on_pushButtonAddLocalInstallationB
     // lineEditAddLocalInstallationPath
     ui->lineEditAddLocalInstallationPath->setText(QFileDialog::getExistingDirectory(this, "Add Local Installation", QDir::home().absolutePath()));
 }
+
+void ServerWindow_AddLocalInstallationDialog::on_pushButtonAddLocalInstallationOK_clicked()
+{
+    emit pathSelected(ui->lineEditAddLocalInstallationPath->text().toStdString());
+    close();
+}
