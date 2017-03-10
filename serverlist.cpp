@@ -50,7 +50,7 @@ void ServerList::update()
     parse();
 }
 
-Server &ServerList::from_name(const std::__cxx11::string &name)
+Server &ServerList::fromName(const std::__cxx11::string &name)
 {
     auto it = begin();
 
