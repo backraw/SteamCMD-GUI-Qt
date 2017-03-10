@@ -28,7 +28,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     // Set the path to the SteamCMD executable as the text of lineEditSteamCMDExecutablePath
-    ui->lineEditSteamCMDExecutablePath->setText(QString::fromStdString(m_settings["steamcmd"].get<std::string>()));
+    if (m_settings.count("steamcmd") > 0)
+    {
+        ui->lineEditSteamCMDExecutablePath->setText(QString::fromStdString(m_settings["steamcmd"].get<std::string>()));
+    }
 
     // Connect signals and slots
     QObject::connect(&m_server_window, SIGNAL(onClosed()), this, SLOT(on_server_window_closed()));

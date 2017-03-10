@@ -17,7 +17,14 @@ Settings::Settings()
 
     // Find the SteamCMD executable if it is not set in
     // ~/.config/steamcmd-gui-qt/settings.json
-    if (!path_exists || (path_exists && !QFile(QString::fromStdString(((*this)["steamcmd"]).get<std::string>())).exists()))
+    if (path_exists)
+    {
+        if (count("steamcmd") > 0 && !QFile(QString::fromStdString(((*this)["steamcmd"]).get<std::string>())).exists())
+        {
+            findSteamCMD();
+        }
+    }
+    else
     {
         findSteamCMD();
     }
