@@ -63,6 +63,7 @@ void ServerWindow::setServer(steamcmd::Server *server, steamcmd::Settings *setti
 
 void ServerWindow::on_pushButtonLocalInstallationsAdd_clicked()
 {
+    m_add_local_installation_dialog->show();
 }
 
 void ServerWindow::on_listWidgetLocalInstallations_clicked(const QModelIndex &index)
