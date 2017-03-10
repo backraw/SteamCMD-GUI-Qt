@@ -22,7 +22,7 @@ public:
     explicit ServerWindow(QWidget *parent = 0);
     ~ServerWindow();
 
-    void setServer(const steamcmd::Server * const server, steamcmd::Settings *settings);
+    void setup(const steamcmd::Server * const server, steamcmd::Settings *settings);
 
 protected:
     void closeEvent(QCloseEvent *e);

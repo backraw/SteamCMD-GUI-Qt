@@ -131,7 +131,7 @@ void MainWindow::on_listWidgetServerList_doubleClicked(const QModelIndex &index)
         const QString name = ui->listWidgetServerList->item(index.row())->text();
 
         // Prepare 'm_server_window'
-        m_server_window.setServer(&m_serverlist.fromName(name.toStdString()), &m_settings);
+        m_server_window.setup(&m_serverlist.fromName(name.toStdString()), &m_settings);
 
         // Show 'm_server_window'
         m_server_window.show();
