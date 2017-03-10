@@ -15,6 +15,9 @@ public:
     explicit ServerWindow_AddLocalInstallationDialog(QWidget *parent = 0);
     ~ServerWindow_AddLocalInstallationDialog();
 
+private slots:
+    void on_pushButtonAddLocalInstallationBrowse_clicked();
+
 private:
     Ui::ServerWindow_AddLocalInstallationDialog *ui;
 };
