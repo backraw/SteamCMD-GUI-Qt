@@ -34,6 +34,17 @@ void ServerWindow::setServer(const steamcmd::Server * const server, const steamc
     m_settings = settings;
 
     setWindowTitle(QString::fromStdString(server->m_name));
+
+    // Refresh the list view
+    ui->listWidgetLocalInstallations->clear();
+
+    if (settings->count(server->m_name) > 0)
+    {
+        for (auto it : (*settings)[server->m_name])
+        {
+            ui->listWidgetLocalInstallations->addItem(QString::fromStdString(it.get<std::string>()));
+        }
+    }
 }
 
 void ServerWindow::on_pushButtonLocalInstallationsAdd_clicked()
