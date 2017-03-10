@@ -23,6 +23,9 @@ protected:
 private slots:
     void on_pushButtonAddLocalInstallationBrowse_clicked();
 
+signals:
+    void pathSelected(const std::string &path);
+
 private:
     Ui::ServerWindow_AddLocalInstallationDialog *ui;
 };
