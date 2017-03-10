@@ -77,3 +77,31 @@ void ServerWindow::on_pushButtonLocalInstallationsRemove_clicked()
     // Remove the selected ListWidget item
     ui->listWidgetLocalInstallations->removeItemWidget(ui->listWidgetLocalInstallations->selectedItems().at(0));
 }
+
+void ServerWindow::on_pathSelected(const std::string &path)
+{
+    // Get a QString object from 'path'
+    const QString qpath = QString::fromStdString(path);
+
+    if (QDir(qpath).exists())
+    {
+        // Add the path to the list widget
+        ui->listWidgetLocalInstallations->addItem(qpath);
+
+        // Create an entry for the server in
+        // ~/.config/steamcmd-gui-qt/settings.json if necessary
+        if (m_settings->count(m_server->m_name) == 0)
+        {
+            (*m_settings)[m_server->m_name] = nlohmann::json::array();
+        }
+
+        // Add the path to the server entry in the json file
+        // if the entry doesn't exist yet
+        nlohmann::json &j = (*m_settings)[m_server->m_name];
+
+        if (j.count(path) == 0)
+        {
+            j.push_back(path);
+        }
+    }
+}

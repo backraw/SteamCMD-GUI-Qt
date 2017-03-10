@@ -30,6 +30,8 @@ private slots:
 
     void on_pushButtonLocalInstallationsRemove_clicked();
 
+    void on_pathSelected(const std::string &path);
+
 private:
     Ui::ServerWindow *ui;
     ServerWindow_AddLocalInstallationDialog *m_add_local_installation_dialog;
