@@ -1,8 +1,12 @@
 #include "serverwindow.h"
 #include "ui_serverwindow.h"
 
+#include "serverwindow_removeserverthread.h"
+
 #include <QDir>
 #include <QFileDialog>
+#include <QMessageBox>
+#include <QThread>
 
 
 ServerWindow::ServerWindow(QWidget *parent)
@@ -110,6 +114,29 @@ void ServerWindow::on_pushButtonLocalInstallationsRemove_clicked()
             {
                 m_settings->erase(m_settings->find(m_server->m_name));
             }
+
+            // Ask if the folder should be recursively removed from the file system
+            if (QMessageBox::question(this, "Remove server files?",
+                                      "Clicking 'Yes' will recursively remove the folder from the file system!!",
+                                      QMessageBox::No|QMessageBox::Yes) == QMessageBox::Yes)
+            {
+                // Create a new thread
+                QThread *thread = new QThread();
+
+                // Create a worker and move it to the thread
+                auto *worker = new steamcmd::ServerWindow_RemoveServerThread(QDir(QString::fromStdString(text)));
+                worker->moveToThread(thread);
+
+                // Connect signals and slots
+                QObject::connect(worker, SIGNAL(finished(QString)), this, SLOT(on_removeserverthread_finished(QString)));
+                QObject::connect(thread, SIGNAL(started()), worker, SLOT(run()));
+                QObject::connect(worker, SIGNAL(finished(QString)), thread, SLOT(quit()));
+                QObject::connect(worker, SIGNAL(finished(QString)), worker, SLOT(deleteLater()));
+                QObject::connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
+
+                // Start the thread
+                thread->start();
+            }
         }
     }
 }
@@ -140,5 +167,14 @@ void ServerWindow::on_pathSelected(const std::string &path)
         {
             j.push_back(path);
         }
+    }
+}
+
+void ServerWindow::on_removeserverthread_finished(const QString &directory)
+{
+    // Display a QMessageBox to the user, if the folder still exists
+    if (QDir(directory).exists())
+    {
+        QMessageBox::question(this, "Could not remove directory!", directory + " could not be recursively removed by 'rm'!", QMessageBox::Ok);
     }
 }

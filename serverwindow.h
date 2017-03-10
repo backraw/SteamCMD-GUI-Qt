@@ -2,9 +2,11 @@
 #define SERVERWINDOW_H
 
 #include "serverwindow_addlocalinstallationdialog.h"
+
 #include <QCloseEvent>
 #include <QFrame>
 #include <QModelIndex>
+#include <QString>
 
 #include "servers.h"
 #include "settings.h"
@@ -35,6 +37,8 @@ private slots:
     void on_pushButtonLocalInstallationsRemove_clicked();
 
     void on_pathSelected(const std::string &path);
+
+    void on_removeserverthread_finished(const QString &directory);
 
 signals:
     void onClosed();
