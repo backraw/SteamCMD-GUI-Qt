@@ -36,6 +36,9 @@ MainWindow::MainWindow(QWidget *parent)
     // Connect signals and slots
     QObject::connect(&m_server_window, SIGNAL(onClosed()), this, SLOT(on_server_window_closed()));
 
+    // Register meta types
+    qRegisterMetaType<QString>();
+
     // Setup 'm_label_status'
     m_label_status.setText("Status: Idle");
     m_label_status.setIndent(3);
