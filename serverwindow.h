@@ -2,6 +2,7 @@
 #define SERVERWINDOW_H
 
 #include "serverwindow_addlocalinstallationdialog.h"
+#include <QCloseEvent>
 #include <QFrame>
 #include <QModelIndex>
 
@@ -22,6 +23,9 @@ public:
     ~ServerWindow();
 
     void setServer(const steamcmd::Server * const server, steamcmd::Settings *settings);
+
+protected:
+    void closeEvent(QCloseEvent *e);
 
 private slots:
     void on_pushButtonLocalInstallationsAdd_clicked();

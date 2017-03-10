@@ -62,6 +62,15 @@ void ServerWindow::setServer(const steamcmd::Server * const server, steamcmd::Se
     }
 }
 
+void ServerWindow::closeEvent(QCloseEvent *e)
+{
+    // Emit the signal 'onClosed'
+    emit onClosed();
+
+    // Call the base class method
+    QFrame::closeEvent(e);
+}
+
 void ServerWindow::on_pushButtonLocalInstallationsAdd_clicked()
 {
     m_add_local_installation_dialog->show();
