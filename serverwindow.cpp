@@ -66,6 +66,9 @@ void ServerWindow::setup(const steamcmd::Server * const server, steamcmd::Settin
         {
             ui->listWidgetLocalInstallations->addItem(QString::fromStdString(it.get<std::string>()));
         }
+
+        ui->listWidgetLocalInstallations->setItemSelected(ui->listWidgetLocalInstallations->item(0), true);
+        on_listWidgetLocalInstallations_clicked(ui->listWidgetLocalInstallations->indexAt(QPoint(0, 0)));
     }
 
     // Resize the window, respecting the server's 'anonymous' value
