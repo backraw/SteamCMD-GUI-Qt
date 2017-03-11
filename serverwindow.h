@@ -41,8 +41,6 @@ private slots:
 
     void on_listWidgetLocalInstallations_clicked(const QModelIndex &index);
 
-    void on_lineEditLoginUsername_textChanged(const QString &text);
-
     void on_pathSelected(const std::string &path);
     void on_removeserverthread_finished(const QString &directory);
 

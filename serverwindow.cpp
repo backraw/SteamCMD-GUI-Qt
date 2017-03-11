@@ -156,10 +156,6 @@ void ServerWindow::on_pushButtonLocalInstallationsRemove_clicked()
     }
 }
 
-void ServerWindow::on_lineEditLoginUsername_textChanged(const QString &text)
-{
-    ui->pushButtonLocalInstallationsInstall->setDisabled(text.isEmpty());
-}
 
 void ServerWindow::on_pushButtonLocalInstallationsInstall_clicked()
 {
