@@ -80,6 +80,8 @@ void MainWindow::populateServerlistWidget()
 
 void MainWindow::on_pushButtonSteamCMDExecutableBrowse_clicked()
 {
+    // Open a QFileDialog and browse to the SteamCMD executable
+    // Then, store the path as the text for lineEditSteamCMDExecutablePath
     ui->lineEditSteamCMDExecutablePath->setText(QFileDialog::getOpenFileName(this, "SteamCMD Executable", QDir::homePath()));
 }
 
