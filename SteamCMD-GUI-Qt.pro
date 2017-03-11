@@ -45,7 +45,8 @@ SOURCES += main.cpp\
     serverwindow_addlocalinstallationdialog.cpp  \
     json/jsonparser.cpp \
     json/settings.cpp \
-    json/serverlist.cpp
+    json/serverlist.cpp \
+    thread.cpp
 
 HEADERS  += mainwindow.h \
     paths.h \
@@ -55,7 +56,8 @@ HEADERS  += mainwindow.h \
     json/json.hpp \
     json/jsonparser.h \
     json/settings.h \
-    json/serverlist.h
+    json/serverlist.h \
+    thread.h
 
 FORMS    += mainwindow.ui \
     serverwindow.ui \
