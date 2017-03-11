@@ -19,7 +19,7 @@
 ServerWindow::ServerWindow(QWidget *parent)
     : QFrame(parent)
     , ui(new Ui::ServerWindow)
-    , m_add_local_installation_dialog(nullptr)
+    , m_add_local_installation_dialog()
     , m_settings(nullptr)
     , m_server(nullptr)
     , m_initial_height(size().height() - INITIAL_HEIGHT_SUBTRACT)
@@ -31,16 +31,13 @@ ServerWindow::ServerWindow(QWidget *parent)
 
     // Clear the list view
     ui->listWidgetLocalInstallations->clear();
+
+    // Connect signals and slots
+    QObject::connect(&m_add_local_installation_dialog, SIGNAL(pathSelected(std::string)), this, SLOT(on_pathSelected(std::string)));
 }
 
 ServerWindow::~ServerWindow()
 {
-    if (m_add_local_installation_dialog != nullptr)
-    {
-        delete m_add_local_installation_dialog;
-    }
-
-    m_add_local_installation_dialog = nullptr;
     m_server = nullptr;
     m_settings = nullptr;
 
@@ -49,15 +46,6 @@ ServerWindow::~ServerWindow()
 
 void ServerWindow::setup(const steamcmd::Server * const server, steamcmd::Settings *settings)
 {
-    // Refresh the 'Add Local Installation' dialog
-    if (m_add_local_installation_dialog != nullptr)
-    {
-        delete m_add_local_installation_dialog;
-    }
-
-    m_add_local_installation_dialog = new ServerWindow_AddLocalInstallationDialog();
-    QObject::connect(m_add_local_installation_dialog, SIGNAL(pathSelected(std::string)), this, SLOT(on_pathSelected(std::string)));
-
     // Refresh members
     m_server = server;
     m_settings = settings;
@@ -94,7 +82,7 @@ void ServerWindow::closeEvent(QCloseEvent *e)
 
 void ServerWindow::on_pushButtonLocalInstallationsAdd_clicked()
 {
-    m_add_local_installation_dialog->show();
+    m_add_local_installation_dialog.show();
 }
 
 void ServerWindow::on_listWidgetLocalInstallations_clicked(const QModelIndex &index)

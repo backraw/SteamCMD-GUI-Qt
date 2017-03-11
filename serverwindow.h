@@ -75,7 +75,7 @@ signals:
 
 private:
     Ui::ServerWindow *ui;
-    ServerWindow_AddLocalInstallationDialog *m_add_local_installation_dialog;
+    ServerWindow_AddLocalInstallationDialog m_add_local_installation_dialog;
 
 private:
     steamcmd::Settings *m_settings;
