@@ -22,8 +22,7 @@ class ServerList : public std::vector<Server>
 {
 public:
     /**
-     * @brief c'tor
-     *
+     * @brief c'tor:
      * Run update() if ~/.config/steamcmd-gui-qt/serverlist.json doesn't exist
      * Always run parse() [after update()]
      */
