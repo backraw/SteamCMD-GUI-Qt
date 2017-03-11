@@ -14,6 +14,7 @@
 #include <string>
 
 #include "servers.h"
+#include "thread.h"
 #include "json/settings.h"
 
 
@@ -93,9 +94,10 @@ namespace steamcmd {
  * Used to remove a directory from the filesystem using QProcess.
  * An object of this class shall be moved to a QThread instance via \<thread\>->moveToThread().
  */
-class ServerWindow_RemoveServerThread : public QObject
+class ServerWindow_RemoveServerThread : public Thread
 {
     Q_OBJECT
+
 public:
     /**
      * @brief c'tor
@@ -104,6 +106,8 @@ public:
      * @param parent    A pointer to the parent QObject instance (always 0)
      */
     explicit ServerWindow_RemoveServerThread(const QDir directory, QObject *parent = 0);
+
+    void start(const QObject *receiver, const char *slot);
 
 public slots:
     /**

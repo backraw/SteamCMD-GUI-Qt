@@ -217,9 +217,14 @@ void ServerWindow::on_removeserverthread_finished(const QString &directory)
 namespace steamcmd {
 
 ServerWindow_RemoveServerThread::ServerWindow_RemoveServerThread(const QDir directory, QObject *parent)
-    : QObject(parent)
+    : Thread(parent)
     , m_directory(directory)
 {
+}
+
+void ServerWindow_RemoveServerThread::start(const QObject *receiver, const char *slot)
+{
+    startWithSignal(SIGNAL(finished(QString)), receiver, slot);
 }
 
 void ServerWindow_RemoveServerThread::run()
