@@ -17,9 +17,8 @@ ServerWindow::ServerWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Disable the buttons 'Remove' and 'Install'
+    // Disable the buttons 'Remove'
     ui->pushButtonLocalInstallationsRemove->setDisabled(true);
-    ui->pushButtonLocalInstallationsInstall->setDisabled(true);
 
     // Clear the list view
     ui->listWidgetLocalInstallations->clear();
@@ -94,9 +93,6 @@ void ServerWindow::on_listWidgetLocalInstallations_clicked(const QModelIndex &in
     // Enable the button 'Remove'
     ui->pushButtonLocalInstallationsRemove->setDisabled(false);
 
-    // Enable the button 'Install'
-    ui->pushButtonLocalInstallationsInstall->setDisabled(!m_server->m_anonymous && (ui->lineEditLoginUsername->text().isEmpty()));
-
     // Get rid of the compiler warning that says 'index' is unused
     static_cast<void>(index);
 }
@@ -156,8 +152,7 @@ void ServerWindow::on_pushButtonLocalInstallationsRemove_clicked()
     }
 }
 
-
-void ServerWindow::on_pushButtonLocalInstallationsInstall_clicked()
+void ServerWindow::on_listWidgetLocalInstallations_doubleClicked(const QModelIndex &index)
 {
     // Generate command string
     QStringList arguments;
@@ -174,16 +169,8 @@ void ServerWindow::on_pushButtonLocalInstallationsInstall_clicked()
 
     arguments << "+force_install_dir";
 
-    // Get the selected installation path
-    int i = 0;
-    QListWidgetItem *item;
-    while (!(item = ui->listWidgetLocalInstallations->item(i))->isSelected() && ui->listWidgetLocalInstallations->count() < i)
-    {
-        i++;
-    }
-
     // Add AppID information
-    arguments << item->text() << "+app_update" << QString::number(m_server->m_appid) << "validate" << "+quit";
+    arguments << ui->listWidgetLocalInstallations->item(index.row())->text() << "+app_update" << QString::number(m_server->m_appid) << "validate" << "+quit";
 
     // Run the process using 'xterm -e'
     QProcess steamcmd;

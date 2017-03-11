@@ -36,13 +36,14 @@ protected:
 
 private slots:
     void on_pushButtonLocalInstallationsAdd_clicked();
-    void on_pushButtonLocalInstallationsInstall_clicked();
     void on_pushButtonLocalInstallationsRemove_clicked();
 
     void on_listWidgetLocalInstallations_clicked(const QModelIndex &index);
 
     void on_pathSelected(const std::string &path);
     void on_removeserverthread_finished(const QString &directory);
+
+    void on_listWidgetLocalInstallations_doubleClicked(const QModelIndex &index);
 
 signals:
     void onClosed();
