@@ -33,6 +33,9 @@ MainWindow::MainWindow(QWidget *parent)
         ui->lineEditSteamCMDExecutablePath->setText(QString::fromStdString(m_settings["steamcmd"].get<std::string>()));
     }
 
+    // Request focus on it
+    ui->lineEditSteamCMDExecutablePath->grabMouse();
+
     // Connect signals and slots
     QObject::connect(&m_server_window, SIGNAL(onClosed()), this, SLOT(on_server_window_closed()));
 
