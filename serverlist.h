@@ -3,6 +3,9 @@
 
 #include "servers.h"
 
+#include <QLabel>
+#include <QObject>
+
 #include <string>
 #include <vector>
 
@@ -18,6 +21,24 @@ public:
     void update();
 
     Server &fromName(const std::string &name);
+};
+
+class ServerList_UpdateThread : public QObject
+{
+    Q_OBJECT
+
+public:
+    ServerList_UpdateThread(ServerList *serverlist, QLabel *label_status, QObject *parent = 0);
+
+public slots:
+    void run();
+
+signals:
+    void finished();
+
+private:
+    ServerList *m_serverlist;
+    QLabel *m_label_status;
 };
 
 } // namespace steamcmd

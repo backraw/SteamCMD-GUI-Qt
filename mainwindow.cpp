@@ -14,7 +14,6 @@
 #include "jsonparser.h"
 #include "paths.h"
 #include "servers.h"
-#include "serverlist_updatethread.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
