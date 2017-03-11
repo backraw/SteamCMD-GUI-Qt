@@ -48,8 +48,17 @@ MainWindow::MainWindow(QWidget *parent)
     // Add 'm_label_status' to the window's status bar
     statusBar()->addWidget(&m_label_status);
 
-    // Populate the List Widget displaying the server list
-    populateServerlistWidget();
+    // Update the server list if the remote server list hasn't been cached yet
+    if (!steamcmd::PATH_SERVERLIST_JSON.exists())
+    {
+        // Simulate a button click on 'Update'
+        on_pushButtonServerListUpdate_clicked();
+    }
+    else
+    {
+        // Populate the server list widget with the cached values
+        populateServerlistWidget();
+    }
 }
 
 MainWindow::~MainWindow()
