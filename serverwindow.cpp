@@ -1,11 +1,9 @@
 #include "serverwindow.h"
 #include "ui_serverwindow.h"
 
-#include "serverwindow_removeserverthread.h"
-
-#include <QDir>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QProcess>
 #include <QThread>
 
 
@@ -188,3 +186,30 @@ void ServerWindow::on_removeserverthread_finished(const QString &directory)
         QMessageBox::question(this, "Could not remove directory!", directory + " could not be recursively removed by 'rm'!", QMessageBox::Ok);
     }
 }
+
+
+namespace steamcmd {
+
+ServerWindow_RemoveServerThread::ServerWindow_RemoveServerThread(const QDir directory, QObject *parent)
+    : QObject(parent)
+    , m_directory(directory)
+{
+}
+
+void ServerWindow_RemoveServerThread::run()
+{
+    const QString path = m_directory.absolutePath();
+
+    // Remove 'm_directory' from the file system if it exists
+    if (m_directory.exists())
+    {
+        // Start the 'rm -rf' process
+        QProcess rm;
+        rm.start("rm -rf " + path);
+        rm.waitForFinished(-1);
+    }
+
+    emit finished(path);
+}
+
+} // namespace steamcmd

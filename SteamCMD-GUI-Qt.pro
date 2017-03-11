@@ -28,8 +28,7 @@ SOURCES += main.cpp\
     settings.cpp \
     serverlist.cpp \
     serverwindow.cpp \
-    serverwindow_addlocalinstallationdialog.cpp \
-    serverwindow_removeserverthread.cpp
+    serverwindow_addlocalinstallationdialog.cpp
 
 HEADERS  += mainwindow.h \
     json.hpp \
@@ -39,8 +38,7 @@ HEADERS  += mainwindow.h \
     settings.h \
     serverlist.h \
     serverwindow.h \
-    serverwindow_addlocalinstallationdialog.h \
-    serverwindow_removeserverthread.h
+    serverwindow_addlocalinstallationdialog.h
 
 FORMS    += mainwindow.ui \
     serverwindow.ui \

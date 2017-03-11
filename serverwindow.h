@@ -4,9 +4,14 @@
 #include "serverwindow_addlocalinstallationdialog.h"
 
 #include <QCloseEvent>
+#include <QDir>
 #include <QFrame>
 #include <QModelIndex>
+#include <QObject>
 #include <QString>
+#include <QWidget>
+
+#include <string>
 
 #include "servers.h"
 #include "settings.h"
@@ -53,5 +58,26 @@ private:
 
     const int m_initial_height;
 };
+
+
+namespace steamcmd {
+
+class ServerWindow_RemoveServerThread : public QObject
+{
+    Q_OBJECT
+public:
+    explicit ServerWindow_RemoveServerThread(const QDir directory, QObject *parent = 0);
+
+public slots:
+    void run();
+
+signals:
+    void finished(const QString directory);
+
+private:
+    const QDir m_directory;
+};
+
+} // namespace steamcmd
 
 #endif // SERVERWINDOW_H
