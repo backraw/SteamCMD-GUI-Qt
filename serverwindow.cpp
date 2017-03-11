@@ -158,12 +158,10 @@ void ServerWindow::on_pushButtonLocalInstallationsRemove_clicked()
 
 void ServerWindow::on_lineEditLoginUsername_textChanged(const QString &text)
 {
-    ui->pushButtonLocalInstallationsInstall->setDisabled(text.isEmpty() || ui->lineEditLoginPassword->text().isEmpty());
+    ui->pushButtonLocalInstallationsInstall->setDisabled(text.isEmpty());
 }
 
-void ServerWindow::on_lineEditLoginPassword_textChanged(const QString &text)
 {
-    ui->pushButtonLocalInstallationsInstall->setDisabled(text.isEmpty() || ui->lineEditLoginUsername->text().isEmpty());
 }
 
 void ServerWindow::on_pathSelected(const std::string &path)
