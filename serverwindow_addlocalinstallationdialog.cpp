@@ -9,6 +9,9 @@ ServerWindow_AddLocalInstallationDialog::ServerWindow_AddLocalInstallationDialog
     , ui(new Ui::ServerWindow_AddLocalInstallationDialog)
 {
     ui->setupUi(this);
+
+    // Request the focus for the line edit
+    ui->lineEditAddLocalInstallationPath->grabMouse();
 }
 
 ServerWindow_AddLocalInstallationDialog::~ServerWindow_AddLocalInstallationDialog()
