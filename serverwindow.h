@@ -50,6 +50,8 @@ private:
 private:
     steamcmd::Settings *m_settings;
     const steamcmd::Server *m_server;
+
+    const int m_initial_height;
 };
 
 #endif // SERVERWINDOW_H

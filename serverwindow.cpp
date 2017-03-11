@@ -15,6 +15,7 @@ ServerWindow::ServerWindow(QWidget *parent)
     , m_add_local_installation_dialog(nullptr)
     , m_settings(nullptr)
     , m_server(nullptr)
+    , m_initial_height(size().height() - 190)
 {
     ui->setupUi(this);
 
@@ -64,6 +65,9 @@ void ServerWindow::setup(const steamcmd::Server * const server, steamcmd::Settin
             ui->listWidgetLocalInstallations->addItem(QString::fromStdString(it.get<std::string>()));
         }
     }
+
+    // Resize the window, respecting the server's 'anonymous' value
+    resize(size().width(), (!server->m_anonymous) ? m_initial_height + 135 : m_initial_height);
 }
 
 void ServerWindow::closeEvent(QCloseEvent *e)
