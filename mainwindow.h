@@ -15,11 +15,19 @@ namespace Ui {
 class MainWindow;
 }
 
+/**
+ * @brief window/MainWindow: The main window of the program.
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
+    /**
+     * @brief c'tor
+     *
+     * @param parent The parent widget of this window (always 0)
+     */
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
