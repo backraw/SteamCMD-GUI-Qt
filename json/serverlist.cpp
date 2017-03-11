@@ -64,10 +64,15 @@ Server &ServerList::fromName(const std::__cxx11::string &name)
 }
 
 ServerList_UpdateThread::ServerList_UpdateThread(ServerList *serverlist, QLabel *label_status, QObject *parent)
-    : QObject(parent)
+    : Thread(parent)
     , m_serverlist(serverlist)
     , m_label_status(label_status)
 {
+}
+
+void ServerList_UpdateThread::start(const QObject *receiver, const char *slot)
+{
+    startWithSignal(SIGNAL(finished()), receiver, slot);
 }
 
 void ServerList_UpdateThread::run()

@@ -2,6 +2,7 @@
 #define SERVERLIST_H
 
 #include "servers.h"
+#include "thread.h"
 
 #include <QLabel>
 #include <QObject>
@@ -57,7 +58,7 @@ public:
  * Used to run the script serverlist.py using QProcess.
  * An object of this class shall be moved to a QThread instance via \<thread\>->moveToThread().
  */
-class ServerList_UpdateThread : public QObject
+class ServerList_UpdateThread : public Thread
 {
     Q_OBJECT
 
@@ -70,6 +71,8 @@ public:
      * @param parent        A pointer to the parent QObject (always 0)
      */
     ServerList_UpdateThread(ServerList *serverlist, QLabel *label_status, QObject *parent = 0);
+
+    void start(const QObject *receiver, const char *slot);
 
 public slots:
     /**
