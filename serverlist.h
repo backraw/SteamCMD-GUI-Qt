@@ -74,7 +74,8 @@ public:
 
 public slots:
     /**
-     * @brief Run the script serverlist.py using QProcess
+     * @brief slot/run:
+     * Run the script serverlist.py using QProcess.
      */
     void run();
 

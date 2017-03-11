@@ -108,7 +108,6 @@ public:
 public slots:
     /**
      * @brief slot/run:
-     *
      * Run a QProcess to remove 'm_directory' using 'rm -rf'.
      */
     void run();
