@@ -128,22 +128,7 @@ void ServerWindow::on_pushButtonLocalInstallationsRemove_clicked()
                                       "Clicking 'Yes' will recursively remove the folder from the file system!!",
                                       QMessageBox::No|QMessageBox::Yes) == QMessageBox::Yes)
             {
-                // Create a new thread
-                QThread *thread = new QThread();
-
-                // Create a worker and move it to the thread
-                auto *worker = new steamcmd::ServerWindow_RemoveServerThread(QDir(QString::fromStdString(text)));
-                worker->moveToThread(thread);
-
-                // Connect signals and slots
-                QObject::connect(worker, SIGNAL(finished(QString)), this, SLOT(on_removeserverthread_finished(QString)));
-                QObject::connect(thread, SIGNAL(started()), worker, SLOT(run()));
-                QObject::connect(worker, SIGNAL(finished(QString)), thread, SLOT(quit()));
-                QObject::connect(worker, SIGNAL(finished(QString)), worker, SLOT(deleteLater()));
-                QObject::connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
-
-                // Start the thread
-                thread->start();
+                (new steamcmd::ServerWindow_RemoveServerThread(QDir(QString::fromStdString(text))))->start(this, SLOT(on_removeserverthread_finished(QString)));
             }
         }
     }
