@@ -42,7 +42,6 @@ void ServerList::update()
 {
     // Parse https://developer.valvesoftware.com/wiki/Dedicated_Servers_List
     QProcess serverlist_py;
-
     serverlist_py.start("python3 ./serverlist.py");
     serverlist_py.waitForFinished();
 
