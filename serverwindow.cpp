@@ -17,8 +17,9 @@ ServerWindow::ServerWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Disable the button 'Remove' on object creation
+    // Disable the buttons 'Remove' and 'Install'
     ui->pushButtonLocalInstallationsRemove->setDisabled(true);
+    ui->pushButtonLocalInstallationsInstall->setDisabled(true);
 
     // Clear the list view
     ui->listWidgetLocalInstallations->clear();
