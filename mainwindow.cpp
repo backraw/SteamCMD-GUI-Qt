@@ -124,22 +124,8 @@ void MainWindow::on_pushButtonServerListUpdate_clicked()
     // Clear the Server List ListWidget
     ui->listWidgetServerList->clear();
 
-    // Create a new thread object
-    QThread *thread = new QThread();
-
-    // Create a worker and move it to the thread
-    auto *worker = new steamcmd::ServerList_UpdateThread(&m_serverlist, &m_label_status);
-    worker->moveToThread(thread);
-
-    // Connect signals and slots
-    QObject::connect(worker, SIGNAL(finished()), this, SLOT(on_serverlist_updatethread_finished()));
-    QObject::connect(thread, SIGNAL(started()), worker, SLOT(run()));
-    QObject::connect(worker, SIGNAL(finished()), thread, SLOT(quit()));
-    QObject::connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
-    QObject::connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
-
-    // Start the thread
-    thread->start();
+    // Run the server list update thread
+    (new steamcmd::ServerList_UpdateThread(&m_serverlist, &m_label_status))->start(this, SLOT(on_serverlist_updatethread_finished()));
 }
 
 void MainWindow::on_listWidgetServerList_doubleClicked(const QModelIndex &index)
