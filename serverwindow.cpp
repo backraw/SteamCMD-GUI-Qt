@@ -7,6 +7,15 @@
 #include <QThread>
 
 
+// Define how much to add to the initial window height
+// if a Steam logon is required
+#define INITIAL_HEIGHT_ADD      70
+
+// Define how much to subtract from the initial window height
+// if a Steam logon is not required
+#define INITIAL_HEIGHT_SUBTRACT 190
+
+
 ServerWindow::ServerWindow(QWidget *parent)
     : QFrame(parent)
     , ui(new Ui::ServerWindow)
