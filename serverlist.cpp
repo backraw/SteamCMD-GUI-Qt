@@ -51,13 +51,15 @@ void ServerList::update()
 
 Server &ServerList::fromName(const std::__cxx11::string &name)
 {
+    // Loop through each item in this vector and compare its 'm_name'
+    // member to 'name'
     auto it = begin();
-
     while (it->m_name != name && it != end())
     {
         ++it;
     }
 
+    // Return the found Server instance
     return *it;
 }
 
