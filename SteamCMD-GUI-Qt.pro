@@ -12,7 +12,7 @@ TARGET = SteamCMD-GUI-Qt
 TEMPLATE = app
 
 # Add C++11 support
-QMAKE_CXXFLAGS += -std=c++11
+QMAKE_CXXFLAGS += -std=c++11 -Wall -Wpedantic
 
 # Copy serverlist.py to build directory before building
 serverlist.target = serverlist.py
