@@ -42,6 +42,7 @@ ServerWindow::~ServerWindow()
 
 void ServerWindow::setup(const steamcmd::Server * const server, steamcmd::Settings *settings)
 {
+    // Refresh the 'Add Local Installation' dialog
     if (m_add_local_installation_dialog != nullptr)
     {
         delete m_add_local_installation_dialog;
@@ -50,9 +51,11 @@ void ServerWindow::setup(const steamcmd::Server * const server, steamcmd::Settin
     m_add_local_installation_dialog = new ServerWindow_AddLocalInstallationDialog();
     QObject::connect(m_add_local_installation_dialog, SIGNAL(pathSelected(std::string)), this, SLOT(on_pathSelected(std::string)));
 
+    // Refresh members
     m_server = server;
     m_settings = settings;
 
+    // Set the window title to the server's name
     setWindowTitle(QString::fromStdString(server->m_name));
 
     // Refresh the list view
