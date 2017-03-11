@@ -14,7 +14,7 @@
 #include <string>
 
 #include "servers.h"
-#include "settings.h"
+#include "json/settings.h"
 
 
 namespace Ui {

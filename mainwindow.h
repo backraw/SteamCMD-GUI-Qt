@@ -7,8 +7,8 @@
 
 #include "serverwindow.h"
 
-#include "settings.h"
-#include "serverlist.h"
+#include "json/settings.h"
+#include "json/serverlist.h"
 
 
 namespace Ui {

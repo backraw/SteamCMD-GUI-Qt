@@ -15,11 +15,11 @@ TEMPLATE = app
 QMAKE_CXXFLAGS += -std=c++11 -Wall -Wpedantic
 
 # Copy serverlist.py to build directory before building
-serverlist.target = serverlist.py
-serverlist.commands = cp $$PWD/serverlist.py $$OUT_PWD/serverlist.py
+serverlist.target = scripts/serverlist.py
+serverlist.commands = cp $$PWD/scripts/serverlist.py $$OUT_PWD/serverlist.py
 serverlist.depends = FORCE
 
-PRE_TARGETDEPS += serverlist.py
+PRE_TARGETDEPS += scripts/serverlist.py
 QMAKE_EXTRA_TARGETS += serverlist
 
 # Find doxygen binary
@@ -41,21 +41,21 @@ isEmpty(DOXYGEN_BIN) {
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    jsonparser.cpp \
-    settings.cpp \
-    serverlist.cpp \
     serverwindow.cpp \
-    serverwindow_addlocalinstallationdialog.cpp
+    serverwindow_addlocalinstallationdialog.cpp  \
+    json/jsonparser.cpp \
+    json/settings.cpp \
+    json/serverlist.cpp
 
 HEADERS  += mainwindow.h \
-    json.hpp \
-    jsonparser.h \
     paths.h \
     servers.h \
-    settings.h \
-    serverlist.h \
     serverwindow.h \
-    serverwindow_addlocalinstallationdialog.h
+    serverwindow_addlocalinstallationdialog.h \
+    json/json.hpp \
+    json/jsonparser.h \
+    json/settings.h \
+    json/serverlist.h
 
 FORMS    += mainwindow.ui \
     serverwindow.ui \

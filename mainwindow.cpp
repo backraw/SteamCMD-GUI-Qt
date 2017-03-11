@@ -11,9 +11,9 @@
 #include <QProcess>
 #include <QThread>
 
-#include "jsonparser.h"
 #include "paths.h"
 #include "servers.h"
+#include "json/jsonparser.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
