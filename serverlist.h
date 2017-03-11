@@ -81,7 +81,6 @@ public slots:
 signals:
     /**
      * @brief signal/finished:
-     *
      * Used to signal to MainWindow that the QProcess started by run() has finished.
      */
     void finished();

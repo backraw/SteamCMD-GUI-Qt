@@ -48,7 +48,6 @@ private slots:
 signals:
     /**
      * @brief signal/pathSelected:
-     *
      * Used to signal to ServerWindow that a path has been selected and should be added to its Server List widget.
      *
      * @param path A constant reference to a std::string holding the path the user wants to add to ServerWindow's Server List widget

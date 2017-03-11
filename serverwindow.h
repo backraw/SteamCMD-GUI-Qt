@@ -69,7 +69,6 @@ private slots:
 signals:
     /**
      * @brief signal/onClosed:
-     *
      * Used to signal to MainWindow that this window has been closed by the user.
      */
     void onClosed();
@@ -117,7 +116,6 @@ public slots:
 signals:
     /**
      * @brief signal/finished:
-     *
      * Used to signal to MainWindow's ServerWindow instance that the QProcess started by run() has finished.
      *
      * @param directory A QString holding the path in 'm_directory'
