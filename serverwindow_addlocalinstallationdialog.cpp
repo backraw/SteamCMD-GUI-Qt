@@ -21,6 +21,7 @@ ServerWindow_AddLocalInstallationDialog::~ServerWindow_AddLocalInstallationDialo
 
 void ServerWindow_AddLocalInstallationDialog::keyPressEvent(QKeyEvent *e)
 {
+    // Simulate a button press on 'OK' after the Return key was pressed
     if (e->key() == Qt::Key_Return)
     {
         on_pushButtonAddLocalInstallationOK_clicked();
@@ -36,6 +37,9 @@ void ServerWindow_AddLocalInstallationDialog::on_pushButtonAddLocalInstallationB
 
 void ServerWindow_AddLocalInstallationDialog::on_pushButtonAddLocalInstallationOK_clicked()
 {
+    // Emit the signal 'pathSelected'
     emit pathSelected(ui->lineEditAddLocalInstallationPath->text().toStdString());
+
+    // Close this window
     close();
 }
