@@ -49,8 +49,8 @@ class ServerList(dict):
             f.write('\n')
 
     def parse(self):
-        """Parse <VALVE_SERVERS_LIST_URL>."""
-        # Parse <VALVE_SERVERS_LIST_URL> via BeautifulSoup
+        """Parse https://developer.valvesoftware.com/wiki/Dedicated_Servers_List."""
+        # ... using BeautifulSoup
         html = BeautifulSoup(urlopen(VALVE_SERVERS_LIST_URL).read(), 'lxml')
 
         # Get the game server contents list
