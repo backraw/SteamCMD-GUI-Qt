@@ -91,6 +91,9 @@ void ServerWindow::on_listWidgetLocalInstallations_clicked(const QModelIndex &in
     // Enable the button 'Remove'
     ui->pushButtonLocalInstallationsRemove->setDisabled(false);
 
+    // Enable the button 'Install'
+    ui->pushButtonLocalInstallationsInstall->setDisabled(!m_server->m_anonymous && (ui->lineEditLoginUsername->text().isEmpty() || ui->lineEditLoginUsername->text().isEmpty()));
+
     // Get rid of the compiler warning that says 'index' is unused
     static_cast<void>(index);
 }
