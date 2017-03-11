@@ -161,7 +161,38 @@ void ServerWindow::on_lineEditLoginUsername_textChanged(const QString &text)
     ui->pushButtonLocalInstallationsInstall->setDisabled(text.isEmpty());
 }
 
+void ServerWindow::on_pushButtonLocalInstallationsInstall_clicked()
 {
+    // Generate command string
+    QStringList arguments;
+    arguments << "-e" << QString::fromStdString((*m_settings)["steamcmd"].get<std::string>()) << "+login";
+
+    if (m_server->m_anonymous)
+    {
+        arguments << "anonymous";
+    }
+    else
+    {
+        arguments << ui->lineEditLoginUsername->text();
+    }
+
+    arguments << "+force_install_dir";
+
+    // Get the selected installation path
+    int i = 0;
+    QListWidgetItem *item;
+    while (!(item = ui->listWidgetLocalInstallations->item(i))->isSelected() && ui->listWidgetLocalInstallations->count() < i)
+    {
+        i++;
+    }
+
+    // Add AppID information
+    arguments << item->text() << "+app_update" << QString::number(m_server->m_appid) << "validate" << "+quit";
+
+    // Run the process using 'xterm -e'
+    QProcess steamcmd;
+    steamcmd.startDetached("xterm", arguments);
+    steamcmd.waitForFinished(-1);
 }
 
 void ServerWindow::on_pathSelected(const std::string &path)
