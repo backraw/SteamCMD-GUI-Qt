@@ -94,6 +94,15 @@ void MainWindow::on_pushButtonSteamCMDExecutableBrowse_clicked()
     ui->lineEditSteamCMDExecutablePath->setText(QFileDialog::getOpenFileName(this, "SteamCMD Executable", QDir::homePath()));
 }
 
+void MainWindow::on_pushButtonSteamCMDExecutableFind_clicked()
+{
+    // Find the SteamCMD executable and store it in the settings.json file
+    const QString path = QString::fromStdString(m_settings.findSteamCMD());
+
+    // Set it as the current path
+    ui->lineEditSteamCMDExecutablePath->setText(path);
+}
+
 void MainWindow::on_lineEditSteamCMDExecutablePath_textChanged(const QString &text)
 {
     // Get file information for the file path in 'text'
@@ -160,13 +169,4 @@ void MainWindow::on_server_window_closed()
 {
     // Refresh the server list widget after the ServerWindow instance has been closed
     populateServerlistWidget();
-}
-
-void MainWindow::on_pushButtonSteamCMDExecutableFind_clicked()
-{
-    // Find the SteamCMD executable and store it in the settings.json file
-    const QString path = QString::fromStdString(m_settings.findSteamCMD());
-
-    // Set it as the current path
-    ui->lineEditSteamCMDExecutablePath->setText(path);
 }
