@@ -57,15 +57,17 @@ protected:
     void closeEvent(QCloseEvent *e);
 
 private slots:
+    // GroupBox: Local Instalklations
+    // - Buttons
     void on_pushButtonLocalInstallationsAdd_clicked();
     void on_pushButtonLocalInstallationsRemove_clicked();
-
+    // - ListViews
     void on_listWidgetLocalInstallations_clicked(const QModelIndex &index);
+    void on_listWidgetLocalInstallations_doubleClicked(const QModelIndex &index);
 
+    // Others
     void on_pathSelected(const std::string &path);
     void on_removeserverthread_finished(const QString &directory);
-
-    void on_listWidgetLocalInstallations_doubleClicked(const QModelIndex &index);
 
 signals:
     /**
