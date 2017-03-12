@@ -63,6 +63,7 @@ Server &ServerList::fromName(const std::__cxx11::string &name)
     return *it;
 }
 
+
 ServerList_UpdateThread::ServerList_UpdateThread(ServerList *serverlist, QLabel *label_status, QObject *parent)
     : Thread(parent)
     , m_serverlist(serverlist)
